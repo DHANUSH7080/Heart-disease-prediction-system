@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link rel="stylesheet" type="text/css" href="static/assets/css/style.css">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+    <style>
+        body {
+    padding-top: 3.5rem;
+}
+
+nav {
+    font-family: sans-serif;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+    </style>
+
+</head>
+<body>
+    <header>
+        <!--Navigation Bar-->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#"><b>Heart Disease Prediction System</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Predict</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/about">About Us</a>
+                    </li>
+                   
+                    <li class="nav-item active">
+                        {% if 'loggedin' in session: %} <a class="nav-link" href="/logout">Logout</a>
+                         {% else  %} <a class="nav-link" href="/login">Login</a>
+                         	{% endif %} 
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+     <header>
+       
+        <!--Navigation Bar-->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top " > <div class="container">
+            <a class="navbar-brand" href="#"><b>Heart Disease Prediction System</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Predict</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/about">About Us</a>
+                    </li>
+                   
+                    <li class="nav-item active">
+                        {% if 'loggedin' in session: %} <a class="nav-link" href="/logout">Logout</a>
+                        {% else  %} <a class="nav-link" href="/login">Login</a>
+                            {% endif %} 
+                    </li>
+                </ul>
+            </div>
+        </nav></div>
+    </header>	
+	<section class="mainform">
+		<div class="container col-lg-4 ">
+	
+			<div class="row HeartDisease">  <section class="title">
+				<h2 >Register </h2></section>
+				{% if error_message %}
+					<p style="color: red;">{{ error_message }}</p>
+				{% endif %} 
+			  
+			 
+				<!-- <div>
+					<img src="{{ url_for('static', filename='plot.png') }}" alt="Count Plot">
+				</div> -->
+				
+			   
+		<div class="col-lg-12" style="padding: 30px; ">
+		<h2></h2>
+		<form action="{{ url_for('register') }}" method="post">
+		
+			<div class=" row " >
+                {% if message != '' %}
+				<div class="alert alert-success  col-lg-12 text-center " >{{ message }}</div>
+			{% endif %}</div><div class=" row " style="margin: 20px 0px;">
+				<label for="name" class="col-lg-4 " >Name:</label>
+                <input type="text" class="form-control col-lg-8 " id="name"  placeholder="Enter Name" name="name" required><br>
+			</div><div class=" row " style="margin: 20px 0px;">
+            <label for="email" class="col-lg-4 ">Email:</label><br>
+            <input type="email" class="form-control col-lg-8 "  id="email"  placeholder="Enter Email" name="email" required><br>
+    </div><div class=" row " style="margin: 20px 0px;">
+            <label for="mobile" class="col-lg-4 ">Phone No:</label><br>
+            <input type="number" min="10"   class="form-control col-lg-8 "   placeholder="Enter Phone No" id="mobile" name="mobile" required><br>
+            </div>
+			<div class="row" style="margin: 20px 0px;">
+				<label for="pwd" class="col-lg-4 ">Password:</label>
+				<input type="password" class="form-control col-lg-8 " id="password" name="password" placeholder="Enter Password" name="pswd">
+			</div>    
+			<button type="submit" class="button-89"  value="Register">Register</button><a href="/login" style="float: right;padding-top:15px;">Already Have An Account</a>
+			
+		</form>
+        
+        <hr>         
+       </div>       
+      </div>     
+    </div>
+  </body>
+</html>

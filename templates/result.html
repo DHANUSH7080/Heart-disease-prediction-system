@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction System         </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link rel="stylesheet" type="text/css" href="static/assets/css/style.css">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+    <style>
+        body {
+    padding-top: 3.5rem;
+}
+
+nav {
+    font-family: sans-serif;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+    </style>
+
+</head>
+<body>
+    <header>
+        <!--Navigation Bar-->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#"><b>Heart Disease Prediction System</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/help">Help</a>
+                </li>
+                <li class="nav-item">
+                     {% if 'loggedin' in session: %} <a class="nav-link" href="/logout">Logout</a>
+                         {% else  %} <a class="nav-link" href="/login">Login</a>
+                         	{% endif %} 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">Sign Up</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+    </header> <header>
+       
+        <!--Navigation Bar-->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top " > <div class="container">
+            <a class="navbar-brand" href="#"><b>Heart Disease Prediction System</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Predict</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/about">About Us</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        {% if 'loggedin' in session: %} <a class="nav-link" href="/logout">Logout</a>
+                        {% else  %} <a class="nav-link" href="/login">Login</a>
+                            {% endif %} 
+                    </li>
+                </ul>
+            </div>
+        </nav></div>
+    </header>
+    <section class="banner"><div class="container">
+      <h2>Heart Disease Prediction </h2></div>
+    </section>  <section class="mainform">
+    <div class="container ">
+
+        <div class="row HeartDisease">  <section class="title">
+            <h2 >Your Heart Disease Prediction Result </h2></section>
+            {% if insert_user_query %}
+                <p style="color: red;">{{ insert_user_query }}</p>
+            {% endif %} 
+          
+    
+   
+    <form method="post" class="row" style="padding: 30px;">
+        <div class="col-2">
+            <img src="static/assets/img/humanheart.jpg" alt="" style="width: 100%;"></div><div class="col-8 HeartBeat">
+                <div class="HeartBeatimg"><img src="static/assets/img/HeartBeat.jpg" alt=""></div>
+    <p>     
+    
+        {% if prediction == 0 %}
+        <h4 style="color: darkgreen; font-weight: bold; text-transform: capitalize; text-align: center;">You are not suffered from heart Disease.<br> No heart disease detected.<br></h4>
+    {% elif prediction == 1 %}
+        <h4 style="color: red; font-weight: bold; text-transform: capitalize; text-align: center;">You are suffered from heart Disease.<br> According to our Calculations, You have Heart Disease</h4>
+    <p style="text-align: center;font-size: larger;">You have {{ pre }}  </p>
+        {% endif %}
+        <p style="text-align: center;">Back to <a href="{{ url_for('index') }}">Check </a></p></p>
+    </div><div class="col-2"> 
+      
+        <img src="static/assets/img/humanheart1.jpg" alt="" style="width: 100%;"></div>
+</body>
+</html>

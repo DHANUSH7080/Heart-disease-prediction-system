@@ -1,0 +1,152 @@
+{% include 'header.html' %}
+<script src="{{ url_for('static',filename='js/teaacher.js') }}"></script>
+<body>
+	{% include 'top_menus.html' %}
+	<div class="container">        
+		{% include 'left_menus.html' %}    
+		<div class="content">
+			<div class="container-fluid">   	
+				<div class="row">
+				<a href="#"><strong>  Edit User Details</strong></a>
+				<br> 
+				{% for predictions in predictionss %}
+					<form method="post" id="predictionsForm" action="{{ url_for('save_predictions')}}" style="margin-top: 20px;">			
+						<div class="form-group col-md-6" style="padding-top: 20px;">
+							<label for="age" class="col-md-12">Age</label>
+							<input type="text" class="form-control "  name="age" placeholder="Enter age (e.g., 40)" value="{{predictions[1]}}" required>
+							<br>
+					</div>
+					<div class="form-group col-md-6" style="padding-top: 20px;">
+							<label for="sex" class="col-md-12">Gender</label>
+						 
+							  <select class="form-control" name="sex" aria-label="multiple select example" id="genderSelect">
+								<option>Select Gender</option>
+								<option value="0">Female</option>
+								<option value="1">Male</option>
+							</select>
+							
+							<script>
+								// Get the select element
+								var selectElement = document.getElementById('genderSelect');
+							
+								// Get the value of predictions[2]
+								var predictionValue = "{{ predictions[2] }}";
+							
+								// Set the selected option based on predictionValue
+								for (var i = 0; i < selectElement.options.length; i++) {
+									if (selectElement.options[i].value === predictionValue) {
+										selectElement.selectedIndex = i;
+										break;
+									}
+								}
+							</script>
+							
+							<br></div><div class="form-group col-md-6">
+					
+							<label for="cp" class="col-md-12">Chest Pain Type</label>
+							<select class="form-control" name="cp" aria-label="multiple select example" id="cp">
+								<option value="0" selected>Angina Pectoris</option>
+								<option value="1">Unstable Angina</option>
+								<option value="2">Prinzmetal's Angina</option>
+								<option value="3">Acute Coronary Syndrome</option> <option value="4">Myocardial Infarction </option>
+							</select>
+							
+							<script>
+								document.addEventListener('DOMContentLoaded', function () {
+									// Get the select element
+									var selectElement = document.getElementById('cp');
+							
+									// Get the value of predictions[3]
+									var cppredictionValue = "{{ predictions[3] }}";
+							
+									// Set the selected option based on predictionValue
+									selectElement.value = cppredictionValue;
+								});
+							</script>
+							
+							<br></div><div class="form-group col-md-6">
+					
+							<label for="trestbps" class="col-md-12">Resting blood pressure</label>
+							<input type="text" class="form-control " name="trestbps" placeholder="Enter resting blood pressure (e.g., 120)" value="{{predictions[4]}}" required>
+							<br></div>
+							<div class="form-group col-md-6">
+							<label for="chol" class="col-md-12">Serum Cholesterol</label> 
+							<input type="text" class="form-control " name="chol" placeholder="Enter serum cholesterol (e.g., 200)" value="{{predictions[5]}}" required>
+							<br></div>
+							<div class="form-group col-md-6">
+							<label for="fbs" class="col-md-12">Fasting Blood Sugar</label>
+							<input type="text" class="form-control " name="fbs" placeholder="Enter fasting blood sugar (0 or 1)" value="{{predictions[6]}}" required>
+							<br></div>
+							<div class="form-group col-md-6">
+							<label for="restecg" class="col-md-12">Resting Electrocardiographic Results</label>
+							<input type="text" class="form-control " name="restecg" placeholder="Enter resting electrocardiographic results (e.g., 2)" value="{{predictions[7]}}"   required>
+							<br></div>
+							<div class="form-group col-md-6">
+							<label for="thalach" class="col-md-12">Maximum Heart Rate Achieved</label>
+							<input type="text" class="form-control " name="thalach" placeholder="Enter maximum heart rate achieved (e.g., 160)" value="{{predictions[8]}}"  required>
+							<br></div>
+							<div class="form-group col-md-6">
+							<label for="exang" class="col-md-12"> Exercise Induced Angina</label>
+							<input type="text" class="form-control " name="exang" placeholder="Enter exercise induced angina (0 or 1)" value="{{predictions[9]}}"  required>
+							<br></div>
+							<div class="form-group col-md-6">
+							<label for="oldpeak" class="col-md-12">ST Depression Induced by Exercise Relative to Rest </label>
+							<input type="text" class="form-control " name="oldpeak" placeholder="Enter ST depression (e.g., 1.5)" value="{{predictions[10]}}"   required>
+							<br></div>
+							<div class="form-group col-md-6">
+							<label for="slope" class="col-md-12">Slope of the Peak Exercise ST Segment</label>
+							<input type="text" class="form-control " name="slope" placeholder="Enter slope (e.g., 2)" value="{{predictions[11]}}"   required>
+							<br></div>
+							<div class="form-group col-md-6">
+							<label for="ca" class="col-md-12">Number of Major Vessels Colored by Fluoroscopy</label>
+							<input type="text" class="form-control " name="ca" placeholder="Enter number of vessels (e.g., 0)" value="{{predictions[12]}}"   required>
+							<br></div>
+							<div class="form-group col-md-6">
+							<label for="thal" class="col-md-12">Thal</label>
+							<select class="form-control" name="thal" aria-label="multiple select example" id="thal">
+								<option value="">{{ predictions[13] }}</option>
+								<option value="">Select thal</option>
+								<option value="1" selected>Beta-Thalassemia</option>
+            <option value="2">Alpha-Thalassemia</option>
+            <option value="3">Beta-Thalassemia Major </option>
+      
+            <option value="4">Beta-Thalassemia Intermedia</option>
+            <option value="5">Alpha-Thalassemia Trait</option>
+            <option value="6">Hemoglobin H Disease</option>
+							</select>
+							
+							<script>
+								// Get the select element
+								var selectElement = document.getElementById('thal');
+							
+								// Get the value of predictions[13]
+								var thalPredictionValue = "{{ predictions[13] }}";
+							
+								// Iterate over the options and set the selected attribute
+								for (var i = 0; i < selectElement.options.length; i++) {
+									if (selectElement.options[i].value === thalPredictionValue) {
+										selectElement.options[i].selected = true;
+										break;
+									}
+								}
+							</script>
+							
+							
+							<br>
+							</div>				
+					 											
+						
+						<div class="modal-footer">
+							<input type="hidden" name="predictionsid" id="predictionsid" value="{{predictions[0]}}" />						
+							<input type="hidden" name="action" id="action" value="updatepredictions" />
+							<input type="submit" name="save" id="save" class="btn btn-info" value="Save" />
+						</div>
+					
+					</form>
+				{% endfor %}						
+				</div>	
+			</div>
+		</div>	
+	</div> 
+</body>
+</html>

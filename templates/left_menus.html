@@ -1,0 +1,38 @@
+<div class="wrapper1" style="margin: auto;padding-top: 10vh;">
+    <div class="sidebar" data-background-color="black" data-active-color="danger" style="position: fixed;">
+    <div class="sidebar-wrapper" id="sideLinks" style="padding-top: 10vh;"  >
+            <div class="logo">
+                <a href="{{ url_for('dashboard') }}" class="simple-text" style="font-size: 15px;">
+                    Heart Disease Prediction
+                </a>
+            </div>  <ul class="nav">
+                <li class="" id="dashboard">
+                    <a href="{{ url_for('dashboard') }}" class="menu-link">
+                        <i class="ti-dashboard"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li id="predictions">
+                    <a href="{{ url_for('predictions') }}" class="menu-link">
+                        <i class="ti-user"></i>
+                        <p>User Predictions</p>
+                    </a>
+                </li>  
+                <li id="Dataset">
+                    <a href="{{ url_for('Dataset') }}" class="menu-link">
+                        <i class="ti-bar-chart"></i>
+                        <p>Checking Dataset</p>
+                    </a>
+                </li>
+                <li id="MLalgorithm">
+                    <a href="{{ url_for('MLalgorithm') }}" class="menu-link">
+                        <i class="ti-settings"></i>
+                        <p>Checking Algorithm</p>
+                    </a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-panel " style="">
+       

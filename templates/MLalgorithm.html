@@ -1,0 +1,69 @@
+{% include 'header.html' %}
+<body>
+	{% include 'top_menus.html' %}
+	<div class="container">  
+		
+		{% include 'left_menus.html' %}  
+		<div class="content">
+			<div class="container-fluid">    			
+                <div class="row"><!--row begins-->
+                								
+                    <div class="col-lg-8 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                     
+                                    <div class="col-xs-12">
+                                      
+                                            <p> <i class="ti-target"></i><strong> Best Algorithm</strong></p>		
+                                            <img src="{{ url_for('static', filename='algorithmsplot.png') }}" alt="Count Plot" style="width: 100%;height: 100%;">
+                                            <br><br>.
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>		
+                     
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                     
+                                    <div class="col-xs-12">
+                                      
+                                          <p><strong>
+                                                <!-- Body content -->
+
+                                                <table style="width: 100%;">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>score</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Random Forest Classifier</td>
+                                                        <td>{{ cv_accuracy }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Logistic Regression</td>
+                                                        <td>{{ score_logreg }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Decision Tree Classifier</td>
+                                                        <td>{{ score_dtc }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>K-Neighbors Classifier</td>
+                                                        <td>{{ score_knc }}</td>
+                                                    </tr>
+                                                </table>
+    </strong></p>		
+                                       
+                                            <br><br>.
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>	
+               	

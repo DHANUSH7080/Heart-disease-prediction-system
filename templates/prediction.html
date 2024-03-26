@@ -1,0 +1,110 @@
+{% include 'header.html' %}
+<script src="{{ url_for('static',filename='js/teacher.js') }}"></script>
+<style>
+	.Predictionstable th{
+color: white;text-transform: capitalize;font-weight: bolder;
+	}
+</style>
+<body>
+ {% include 'top_menus.html' %}
+  <div class="container">        
+      {% include 'left_menus.html' %}    
+	  <div class="content">
+		<div class="container-fluid">   	
+			<div class="row">
+			<a href="#"><strong> User Predictions Details</strong></a>
+			<hr>	
+			
+			<br><br>
+			<table class="table table-striped Predictionstable">
+			<thead style="background-color: brown;">
+			  <tr> 
+				<th>id</th>
+				<th>age</th>
+				<th>sex</th>				
+				<th>cp</th>
+				<th>trestbps</th>
+				<th>chol</th>	
+				<th>fbs</th>
+				<th>restecg</th>	
+				<th>thalach</th>
+				<th>exang</th>	
+				<th>oldpeak</th>
+				<th>slope</th>	
+				<th>ca</th>
+				<th>thal</th>	
+				
+				<th>prediction</th>
+				
+				<th></th>
+				<th></th>				
+			  </tr>
+			</thead>
+			<tbody> 
+			  {% for predictions in prediction %}
+			  <tr>
+				<td >{{predictions[0]}}</td>
+				<td>{{predictions[1]}}</td>
+				<td>
+					{{predictions[2]}}
+					 
+				</td>
+				<td>{{predictions[3]}}</td>							
+				<td>{{predictions[4]}}</td>	
+				<td>{{predictions[5]}}</td>	
+				<td>{{predictions[6]}}</td>	
+				<td>{{predictions[7]}}</td>	
+				<td>{{predictions[8]}}</td>	
+				<td>{{predictions[9]}}</td>	
+				<td>{{predictions[10]}}</td>	
+				<td>{{predictions[11]}}</td>	
+				<td>{{predictions[12]}}</td>	
+				<td>{{predictions[13]}}</td>
+				<td>{{predictions[14]}}</td>	
+			
+				
+				<td><a href="{{url_for('edit_predictions', predictions_id=predictions[0])}}" id="{{predictions[0]}}" class="btn btn-primary update">Edit</a></td>
+				<td><a href="{{url_for('delete_predictions', predictions_id=predictions[0])}}" class="btn btn-danger">Delete</a></td>
+			  </tr>
+			{% endfor %}	  
+			</tbody>
+		  </table>	        
+        <hr> 
+			</div>
+		</div>	
+	</div>	
+  </div>
+  <div id="predictionsModal" class="modal fade">
+		<div class="modal-dialog">
+			<form method="post" id="predictionsForm" action="{{ url_for('save_predictions')}}">
+				<div class="modal-content">
+					<div class="modal-header">						
+						<h4 class="modal-title"><i class="fa fa-plus"></i> Edit predictions</h4>
+					</div>
+					<div class="modal-body">					
+						<div class="form-group">							
+							<label for="Techer" class="control-label">Techer</label>						
+							<input type="text" name="techer_name" id="techer_name" autocomplete="off" class="form-control" placeholder="techer name"/>										
+						</div>						
+						<div class="form-group">
+							<label for="Specialization" class="control-label">Specialization</label>				
+							<select class="form-control" id="specialization" name="specialization"/>
+								<option value="">--Select--</option>
+								{% for subject in subjects %}
+									<option value="{{subject.subject_id}}">{{subject.subject}}</option>		
+								{% endfor %}								
+							</select>							
+						</div>												
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" name="predictionsid" id="predictionsid" />						
+						<input type="hidden" name="action" id="action" value="" />
+						<input type="submit" name="save" id="save" class="btn btn-info" value="Save" />
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+  </body>
+</html>

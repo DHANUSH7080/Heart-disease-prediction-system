@@ -1,0 +1,31 @@
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='6143214.png') }}">
+<style>.navbar-brand {
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;color: white;
+}</style>
+</head>
+<body class="">
+<div role="navigation" class="navbar  navbar-fixed-top" style="background-color: brown;">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a  class="navbar-brand"><b>Heart Disease Prediction System</b></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown"> <a href="{{ url_for('logout') }}"  style="color: white;"><i class="fa fa-power-off" style="color: white;"></i> <strong  style="color: white;">Logout</strong></a>
+             
+                </li>
+                </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	<div class="container" style="min-height:500px;">
+	
